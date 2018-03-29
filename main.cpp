@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-    //change
+    cout<<"test"<<endl;
     return 0;
 }
