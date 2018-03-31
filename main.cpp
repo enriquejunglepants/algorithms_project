@@ -5,8 +5,16 @@ using namespace std;
 int main()
 {
     cout<<"test"<<endl;
-    string s;
-    cin>>s;
-    cout<<s<<endl;
+    int size;
+    cin>>size;
+
+    for(int r=0;r<size;r++){
+      for(int c=0;c<size;c++){
+        int w;
+        cin<<w;
+        cout<<w;
+      }
+      cout<<endl;
+    }
     return 0;
 }
