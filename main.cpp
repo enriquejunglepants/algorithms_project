@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
     int size;
+    int MAX_WEIGHT = 99;
+
     cout<<"Input number of vertices: ";
     cin>>size;
 
@@ -13,7 +15,7 @@ int main()
       for(int c=0;c<size;c++){
         int w;
         //cin>>w;
-        w=rand() % 9;
+        w=rand() % (MAX_WEIGHT+1);
         cout<<w<<"\t";
       }
       cout<<endl;
