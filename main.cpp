@@ -12,7 +12,7 @@ int main()
       for(int c=0;c<size;c++){
         int w;
         cin<<w;
-        cout<<w;
+        cout>>w;
       }
       cout<<endl;
     }
