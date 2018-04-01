@@ -11,13 +11,10 @@ int main()
     cin>>size;
     graph g(size);
     g.print();
-
-    for(int r=0;r<g.size;r++){
-      for(int c=0;c<g.size;c++){
-        cout<<g.edges[r][c]<<"\t";
-      }
-      cout<<endl;
+    for(int i=0;i<size;i++){
+      g.dijkstra(i);
     }
+    g.print_dist();
 
     /*
     int MAX_WEIGHT = 99;
