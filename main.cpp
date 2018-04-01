@@ -1,45 +1,45 @@
 #include<iostream>
 #include <stdlib.h>
 #include "graph.cpp"
+#include <time.h>
+#include <cstdlib>
 
 using namespace std;
+//typedef chrono::high_resolution_clock Clock;
 
 int main()
 {
+    clock_t t;
+
     int size;
     cout<<"Input number of vertices: ";
     cin>>size;
     graph g(size);
-    g.print();
+    //g.print();
+
+
+    cout<<"Dijkstra's Algorithm: ";
+    t=clock();
+
     for(int i=0;i<size;i++){
       g.dijkstra(i);
     }
-    g.print_dist();
+
+    t = clock() - t;  //end point of clock
+    cout << t<<" microseconds"<< endl;
+
+    //g.print_dist();
     g.dist=g.edges;
+
+    cout<<"Floyd-Warshall Algorithm: ";
+    t = clock();
+
     g.floyd_warshall();
-    g.print_dist();
 
-    /*
-    int MAX_WEIGHT = 99;
+    t = clock() - t;  //end point of clock
+    cout << t<<" microseconds"<< endl;
 
-    cout<<"Input number of vertices: ";
-    cin>>size;
-
-    for(int r=0;r<size;r++){
-      for(int c=0;c<size;c++){
-        int w;
-        if(r==c){
-          w=0;
-        }
-        else{
-          w=rand() % (MAX_WEIGHT+1);
-        }
-
-        cout<<w<<"\t";
-      }
-      cout<<endl;
-    }
-    */
+    //g.print_dist();
 
     return 0;
 }
