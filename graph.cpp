@@ -73,11 +73,13 @@ class graph{
         for(int i=0;i<size;i++){
           if(!hit[start][i]){
             int new_dist = dist[start][v] + edges[v][i];
+
             if(new_dist < dist[start][i]){
               dist[start][i] = new_dist;
-              if(min==-1 || new_dist<dist[start][min]){
-                min=i;
-              }
+            }
+
+            if(min==-1 || dist[start][i]<dist[start][min]){
+              min=i;
             }
           }
         }
