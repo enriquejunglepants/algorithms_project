@@ -84,5 +84,16 @@ class graph{
       }
     }
 
-
+    void floyd_warshall(){
+      for(int i=0;i<size;i++){
+        for(int j=0;j<size;j++){
+          for(int k=0;k<size;k++){
+            int new_dist=dist[i][k]+dist[k][j];
+            if(new_dist<dist[i][j]){
+              dist[i][j]=new_dist;
+            }
+          }
+        }
+      }
+    }
 };

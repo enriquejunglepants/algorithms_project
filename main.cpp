@@ -15,6 +15,9 @@ int main()
       g.dijkstra(i);
     }
     g.print_dist();
+    g.dist=g.edges;
+    g.floyd_warshall();
+    g.print_dist();
 
     /*
     int MAX_WEIGHT = 99;
