@@ -1,6 +1,7 @@
 #include<vector>
 #include <stdlib.h>
 #include<iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class graph{
     }
 
     graph(int num_vertices){
+      srand (time(NULL));
       MAX_WEIGHT=99;
       size=num_vertices;
       edges= new int*[size];
@@ -63,6 +65,17 @@ class graph{
       cout<<endl;
     }
 
+    clock_t dijkstra(){
+      clock_t t=clock();
+
+      for(int i=0;i<size;i++){
+        dijkstra(i);
+      }
+      t = clock() - t;
+      reset_dist();
+      return t;
+    }
+
     void dijkstra(int start){
       int v=start;
       int min=start;
@@ -86,16 +99,30 @@ class graph{
       }
     }
 
-    void floyd_warshall(){
-      for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-          for(int k=0;k<size;k++){
-            int new_dist=dist[i][k]+dist[k][j];
-            if(new_dist<dist[i][j]){
-              dist[i][j]=new_dist;
+
+
+    clock_t floyd_warshall(){
+      clock_t t=clock();
+      for(int start=0;start<size;start++){
+        for(int end=0;end<size;end++){
+          if(start!=end){
+            for(int mid=0;mid<size;mid++){
+              if(start!=mid && end!=mid){
+                int new_dist=dist[start][mid]+dist[mid][end];
+                if(new_dist<dist[start][end]){
+                  dist[start][end]=new_dist;
+                }
+              }
             }
           }
         }
       }
+      t = clock() - t;
+      reset_dist();
+      return t;
+    }
+
+    void reset_dist(){
+      dist=edges;
     }
 };
