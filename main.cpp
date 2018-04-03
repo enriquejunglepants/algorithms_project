@@ -2,7 +2,6 @@
 #include <fstream>
 #include <stdlib.h>
 #include "graph.cpp"
-#include "edge.cpp"
 #include <time.h>
 #include <cstdlib>
 #include <queue>
