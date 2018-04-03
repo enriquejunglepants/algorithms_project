@@ -49,6 +49,7 @@ void generate_graphs(){
       }
       out_file<<endl;
     }
+    out_file<<endl;
   }
 }
 
@@ -61,6 +62,8 @@ int main(int argc, char* argv[])
 
       ifstream in_file;
       in_file.open(argv[1]);
+      ofstream out_file;
+      out_file.open("solution.txt");
 
       int num_graphs;
       int size;
@@ -82,17 +85,21 @@ int main(int argc, char* argv[])
           g.hit[r]=new bool[size];
           for(int c=0;c<size;c++){
             in_file>>g.edges[r][c];
-            g.dist1[r][c]=INF;
-            g.dist2[r][c]=INF;
+            g.dist1[r][c]=g.edges[r][c];
+            g.dist2[r][c]=g.edges[r][c];
           }
         }
-        g.print();
 
-        //g.input_graph(in_file);
         cout<<"Dijkstra: "<<g.dijkstra()<<" microseconds | F-W: "<<g.floyd_warshall()<<" microseconds"<<endl;
+
+        for(int r=0;r<size;r++){
+          for(int c=0;c<size;c++){
+            out_file<<g.dist2[r][c]<<"\t";
+          }
+          out_file<<"\n";
+        }
+        out_file<<"\n";
       }
-
     }
-
     return 0;
 }

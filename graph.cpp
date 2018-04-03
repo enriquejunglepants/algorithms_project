@@ -33,31 +33,6 @@ class graph{
       cout<<endl;
     }
 
-    void print_dist(){
-      ofstream out_file;
-      out_file.open("solution.txt");
-      for(int r=0;r<size;r++){
-        for(int c=0;c<size;c++){
-          out_file<<dist2[r][c]<<"\t";
-        }
-        out_file<<"\n";
-      }
-      out_file<<"\n";
-    }
-
-    string print_dist2(){
-      string s="";
-      for(int r=0;r<size;r++){
-        for(int c=0;c<size;c++){
-          s+=dist2[r][c]+"\t";
-        }
-        s+="\n";
-      }
-      s+="\n";
-      //cout<<s<<endl;
-      return s;
-    }
-
     clock_t dijkstra(){
       clock_t t=clock();
 
@@ -112,7 +87,6 @@ class graph{
         }
       }
       t = clock() - t;
-      print_dist();
       return t;
     }
 };
